@@ -1,0 +1,309 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.API\\CashewDocumentParser.API.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.API\\CashewDocumentParser.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.API\\CashewDocumentParser.API.csproj",
+        "projectName": "CashewDocumentParser.API",
+        "projectPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.API\\CashewDocumentParser.API.csproj",
+        "packagesPath": "C:\\Users\\catoy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\catoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.fury.io/62ctPzVBeMedWUPszJdB/catoyeung713/": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Helpers\\CashewDocumentParser.Helpers.csproj": {
+                "projectPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Helpers\\CashewDocumentParser.Helpers.csproj"
+              },
+              "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Models\\CashewDocumentParser.Models.csproj": {
+                "projectPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Models\\CashewDocumentParser.Models.csproj"
+              },
+              "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.ViewModels\\CashewDocumentParser.ViewModels.csproj": {
+                "projectPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.ViewModels\\CashewDocumentParser.ViewModels.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.6.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Helpers\\CashewDocumentParser.Helpers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Helpers\\CashewDocumentParser.Helpers.csproj",
+        "projectName": "CashewDocumentParser.Helpers",
+        "projectPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Helpers\\CashewDocumentParser.Helpers.csproj",
+        "packagesPath": "C:\\Users\\catoy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Helpers\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\catoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.fury.io/62ctPzVBeMedWUPszJdB/catoyeung713/": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {
+              "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Models\\CashewDocumentParser.Models.csproj": {
+                "projectPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Models\\CashewDocumentParser.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Models\\CashewDocumentParser.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Models\\CashewDocumentParser.Models.csproj",
+        "projectName": "CashewDocumentParser.Models",
+        "projectPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Models\\CashewDocumentParser.Models.csproj",
+        "packagesPath": "C:\\Users\\catoy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\catoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.fury.io/62ctPzVBeMedWUPszJdB/catoyeung713/": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.Extensions.Identity.Stores": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.ViewModels\\CashewDocumentParser.ViewModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.ViewModels\\CashewDocumentParser.ViewModels.csproj",
+        "projectName": "CashewDocumentParser.ViewModels",
+        "projectPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.ViewModels\\CashewDocumentParser.ViewModels.csproj",
+        "packagesPath": "C:\\Users\\catoy\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.ViewModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\catoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.fury.io/62ctPzVBeMedWUPszJdB/catoyeung713/": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.DataAnnotations": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

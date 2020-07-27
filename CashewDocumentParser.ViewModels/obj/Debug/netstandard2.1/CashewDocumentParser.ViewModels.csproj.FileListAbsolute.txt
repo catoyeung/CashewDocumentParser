@@ -1,0 +1,9 @@
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.ViewModels\bin\Debug\netstandard2.1\CashewDocumentParser.ViewModels.deps.json
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.ViewModels\bin\Debug\netstandard2.1\CashewDocumentParser.ViewModels.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.ViewModels\bin\Debug\netstandard2.1\CashewDocumentParser.ViewModels.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.ViewModels\obj\Debug\netstandard2.1\CashewDocumentParser.ViewModels.csprojAssemblyReference.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.ViewModels\obj\Debug\netstandard2.1\CashewDocumentParser.ViewModels.AssemblyInfoInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.ViewModels\obj\Debug\netstandard2.1\CashewDocumentParser.ViewModels.AssemblyInfo.cs
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.ViewModels\obj\Debug\netstandard2.1\CashewDocumentParser.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.ViewModels\obj\Debug\netstandard2.1\CashewDocumentParser.ViewModels.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.ViewModels\obj\Debug\netstandard2.1\CashewDocumentParser.ViewModels.pdb

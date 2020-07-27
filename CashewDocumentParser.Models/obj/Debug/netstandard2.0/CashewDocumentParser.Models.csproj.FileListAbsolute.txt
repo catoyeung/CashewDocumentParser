@@ -1,0 +1,5 @@
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Models\bin\Debug\netstandard2.0\CashewDocumentParser.Models.deps.json
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Models\bin\Debug\netstandard2.0\CashewDocumentParser.Models.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Models\obj\Debug\netstandard2.0\CashewDocumentParser.Models.csprojAssemblyReference.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Models\obj\Debug\netstandard2.0\CashewDocumentParser.Models.AssemblyInfoInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Models\obj\Debug\netstandard2.0\CashewDocumentParser.Models.AssemblyInfo.cs

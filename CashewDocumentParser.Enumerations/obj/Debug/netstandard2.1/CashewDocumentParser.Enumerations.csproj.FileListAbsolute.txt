@@ -1,0 +1,9 @@
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Enumerations\bin\Debug\netstandard2.1\CashewDocumentParser.Enumerations.deps.json
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Enumerations\bin\Debug\netstandard2.1\CashewDocumentParser.Enumerations.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Enumerations\bin\Debug\netstandard2.1\CashewDocumentParser.Enumerations.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Enumerations\obj\Debug\netstandard2.1\CashewDocumentParser.Enumerations.csprojAssemblyReference.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Enumerations\obj\Debug\netstandard2.1\CashewDocumentParser.Enumerations.AssemblyInfoInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Enumerations\obj\Debug\netstandard2.1\CashewDocumentParser.Enumerations.AssemblyInfo.cs
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Enumerations\obj\Debug\netstandard2.1\CashewDocumentParser.Enumerations.csproj.CoreCompileInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Enumerations\obj\Debug\netstandard2.1\CashewDocumentParser.Enumerations.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Enumerations\obj\Debug\netstandard2.1\CashewDocumentParser.Enumerations.pdb

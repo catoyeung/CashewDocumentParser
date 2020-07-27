@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0; 
+  border: 0;
+  box-sizing: border-box;
+}
+*:focus {
+  outline: 0;
+}
+html, body, #root {
+  height: 100%;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    font-family: 'Roboto Condensed', 'Roboto', 'Microsoft JhengHei', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 80%;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:active {
+  color: #e31a2f;
+}
+ul {
+  list-style: none;
+}
+button {
+  cursor: pointer;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+body .MuiButton-root {
+  font-family: 'Roboto Condensed', 'Roboto', 'Microsoft JhengHei', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+.MuiButton-root.btn {
+  background-color: #e31a2f;
+  color: white;
+  border-radius: 3px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: box-shadow .3s
+}
+.MuiButton-root.btn:hover {
+  background-color: #e31a2f;
+  box-shadow: 1px 1px 1px rgba(33,33,33,.5);
+}
+.MuiButton-outlined.btn {
+  background-color: white;
+  color: #e31a2f;
+}
+.MuiButton-outlined.btn:hover {
+  background-color: white;
+  color: #e31a2f;
+}
+.form {
+  border: 2px solid #e31a2f;
+}
+.formHeader {
+  padding: 18px 10px;
+  background: #e31a2f;
+  color: white
+}
+.formDiv {
+  padding: 18px 10px;
+}
+.formActionDiv {
+  padding: 0 10px 18px 10px;
+}
+.MuiFormControl-root.txtHalfWidth {
+  width: 45%;
+  margin-right: 5%;
+}
+.MuiFormControl-root.txtHalfWidth:last-child {
+  width: 50%;
+  margin-right: 0;
+}
+body .MuiFormLabel-root {
+  font-family: 'Roboto Condensed', 'Roboto', 'Microsoft JhengHei', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+body .MuiInputBase-input {
+  font-family: 'Roboto Condensed', 'Roboto', 'Microsoft JhengHei', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+body .MuiTypography-body1 {
+  font-family: 'Roboto Condensed', 'Roboto', 'Microsoft JhengHei', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+body .MuiAlert-standardSuccess {
+  font-family: 'Roboto Condensed', 'Roboto', 'Microsoft JhengHei', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
