@@ -9,7 +9,7 @@ import { TextField, Button, FormControlLabel, Checkbox } from '@material-ui/core
 import { CheckBoxIcon } from '@material-ui/icons';
 import Alert from '@material-ui/lab/Alert'
 
-import API from '../../../API'
+import getAPI from '../../../API'
 
 const useStyles = makeStyles((theme) => ({
   loginForm: {
@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 const ResetPassword = (props) => {
 
   const history = useHistory()
+
+  const API = getAPI(history)
 
   const classes = useStyles();
 
@@ -89,7 +91,7 @@ const ResetPassword = (props) => {
           Token: urlParams.token
         }
         setRequestSent(true)
-        await API.post("Account/ResetPassword", data).then((res) => {
+        await API.post("account/resetpassword", data).then((res) => {
           setValidationMessage("")
           setSuccessMessage("Password has been reset. Please login with the new password.")
           setRequestSent(false)

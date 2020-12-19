@@ -1,6 +1,4 @@
-﻿using System;
-using CashewDocumentParser.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -61,9 +59,29 @@ namespace CashewDocumentParser.Models
                 b.ToTable("TB_Template");
             });
 
-            modelBuilder.Entity<SampleDocument>(b =>
+            modelBuilder.Entity<ExtractQueue>(b =>
             {
-                b.ToTable("TB_SampleDocument");
+                b.ToTable("TB_ExtractQueue");
+            });
+
+            modelBuilder.Entity<ImportQueue>(b =>
+            {
+                b.ToTable("TB_ImportQueue");
+            });
+
+            modelBuilder.Entity<IntegrationQueue>(b =>
+            {
+                b.ToTable("TB_IntegrationQueue");
+            });
+
+            modelBuilder.Entity<PreprocessingQueue>(b =>
+            {
+                b.ToTable("TB_PreprocessingQueue");
+            });
+
+            modelBuilder.Entity<ProcessedQueue>(b =>
+            {
+                b.ToTable("TB_ProcessedQueue");
             });
         }
     }

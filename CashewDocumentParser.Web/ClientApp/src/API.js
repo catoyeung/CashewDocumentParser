@@ -1,22 +1,29 @@
 ﻿import axios from 'axios';
 
 axios.defaults.withCredentials = true
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.common['Content-Type'] = 'application/json';
 
-let API = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL
-})
+const getAPI = (history) => {
 
-const UNAUTHORIZED = 401
-API.interceptors.response.use(
-  response => response,
-  error => {
-    const { status } = error.response;
-    if (status === UNAUTHORIZED) {
-      localStorage.removeItem("isAuthenticated")
-      window.location.href = '/account/session-timeout'
+  let API = axios.create({
+    baseURL: process.env.REACT_APP_API_BASE_URL
+  })
+
+  const UNAUTHORIZED = 401
+  API.interceptors.response.use(
+    response => response,
+    error => {
+      console.log(error)
+      const { status } = error.response;
+      if (status === UNAUTHORIZED) {
+        history.push('/account/signin')
+      }
+      return Promise.reject(error)
     }
-    return Promise.reject(error)
-  }
-);
+  );
 
-export default API
+  return API
+}
+
+export default getAPI

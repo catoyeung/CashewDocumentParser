@@ -8,7 +8,7 @@ import { TextField, Button, FormControlLabel, Checkbox } from '@material-ui/core
 import { CheckBoxIcon } from '@material-ui/icons';
 import Alert from '@material-ui/lab/Alert'
 
-import API from '../../../API'
+import getAPI from '../../../API'
 
 const useStyles = makeStyles((theme) => ({
   sessionTimeoutForm: {
@@ -24,7 +24,10 @@ const SessionTimeout = () => {
 
   const history = useHistory()
 
+  const API = getAPI(history)
+
   const classes = useStyles();
+
   const [requestSent, setRequestSent] = useState(false)
 
   const [errorMesssage, setErrorMessage] = useState("Session time out. Maybe it is too long for your previous login. Please login again.")

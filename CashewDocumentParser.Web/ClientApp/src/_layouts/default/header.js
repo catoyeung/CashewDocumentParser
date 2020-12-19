@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { Container, Button } from '@material-ui/core';
 
-import API from '../../API'
+import getAPI from '../../API'
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -147,6 +147,8 @@ const DefaultHeader = (props) => {
 
   const context = React.useContext(AppContext)
 
+  const API = getAPI(props.history)
+
   const [activeMenuListItem, setActiveMenuListItem] = useState("")
   //const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("isAuthenticated"))
 
@@ -163,7 +165,7 @@ const DefaultHeader = (props) => {
   }
 
   const logoutBtnClickHandler = async () => {
-    await API.post("Account/SignOut", {}, { withCredentials: true }).then(() => {
+    await API.post("account/signout", {}, { withCredentials: true }).then(() => {
       try {
         localStorage.removeItem("isAuthenticated")
         context.setIsAuthenticated(false)

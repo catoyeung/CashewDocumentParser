@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import { TextField, Button } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 
-import API from '../../../API'
+import getAPI from '../../../API'
 
 const useStyles = makeStyles((theme) => ({
   registerForm: {
@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
 const SignUp = () => {
 
   const history = useHistory()
+
+  const API = getAPI(history)
 
   const classes = useStyles();
 
@@ -98,7 +100,7 @@ const SignUp = () => {
         }
 
         setRequestSent(true)
-        let res = await API.post("Account/SignUp", data)
+        let res = await API.post("account/signup", data)
 
         history.push({
           pathname: "/account/signup-complete",
@@ -106,11 +108,13 @@ const SignUp = () => {
         })
 
       } catch (error) {
+        console.error(error)
         if (error.response?.data) {
           setValidationMessage(error.response.data.errorMessage)
         } else {
           setValidationMessage("Sorry, something went wrong. Please contact system administrator")
         }
+        setRequestSent(false)
       }
     }
   }

@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import { TextField, Button, FormControlLabel, Checkbox } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert'
 
-import API from '../../../API'
+import getAPI from '../../../API'
 
 const useStyles = makeStyles((theme) => ({
   loginForm: {
@@ -26,6 +26,8 @@ const SignIn = () => {
   const context = React.useContext(AppContext)
 
   const history = useHistory()
+
+  const API = getAPI()
 
   const classes = useStyles();
 
@@ -74,10 +76,10 @@ const SignIn = () => {
           RememberMe: rememberMe
         }
         setRequestSent(true)
-        await API.post("Account/SignIn", data, {
+        await API.post("account/signin", data/*, {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
-        }).then((res) => {
+        }*/).then((res) => {
           context.setIsAuthenticated(true)
           history.push("/")
         })

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pMbjA9/MRR1fOOkFBHQaoGRD5wxlxS1B/f8r8xxKVvJTdwX2FsNHZNXYyHIH0Cco0vvkSZJXGv5V2Kq3MoUYUQ==",
+  "dgSpecHash": "630rgazC8c5aXzOHXK09vjAdxIhKFGdwP4LICWJ2P75S+Rvn0Xcq3sdL8pdSTBPUKG63AeFdHXOK34BIZ4ujPw==",
   "success": true,
   "projectFilePath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Helpers\\CashewDocumentParser.Helpers.csproj",
   "expectedPackageFiles": [
@@ -29,7 +29,9 @@
     "C:\\Users\\catoy\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.4\\microsoft.entityframeworkcore.abstractions.3.1.4.nupkg.sha512",
     "C:\\Users\\catoy\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.4\\microsoft.entityframeworkcore.analyzers.3.1.4.nupkg.sha512",
     "C:\\Users\\catoy\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.4\\microsoft.entityframeworkcore.relational.3.1.4.nupkg.sha512",
+    "C:\\Users\\catoy\\.nuget\\packages\\microsoft.entityframeworkcore.relational.design\\1.1.6\\microsoft.entityframeworkcore.relational.design.1.1.6.nupkg.sha512",
     "C:\\Users\\catoy\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.4\\microsoft.entityframeworkcore.sqlserver.3.1.4.nupkg.sha512",
+    "C:\\Users\\catoy\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver.design\\1.1.6\\microsoft.entityframeworkcore.sqlserver.design.1.1.6.nupkg.sha512",
     "C:\\Users\\catoy\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.4\\microsoft.extensions.caching.abstractions.3.1.4.nupkg.sha512",
     "C:\\Users\\catoy\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.4\\microsoft.extensions.caching.memory.3.1.4.nupkg.sha512",
     "C:\\Users\\catoy\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.4\\microsoft.extensions.configuration.3.1.4.nupkg.sha512",

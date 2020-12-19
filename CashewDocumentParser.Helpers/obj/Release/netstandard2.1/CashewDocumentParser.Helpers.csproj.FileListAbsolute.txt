@@ -1,0 +1,12 @@
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\bin\Release\netstandard2.1\CashewDocumentParser.Helpers.deps.json
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\bin\Release\netstandard2.1\CashewDocumentParser.Helpers.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\bin\Release\netstandard2.1\CashewDocumentParser.Helpers.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\bin\Release\netstandard2.1\CashewDocumentParser.Models.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\bin\Release\netstandard2.1\CashewDocumentParser.Models.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\obj\Release\netstandard2.1\CashewDocumentParser.Helpers.csprojAssemblyReference.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\obj\Release\netstandard2.1\CashewDocumentParser.Helpers.AssemblyInfoInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\obj\Release\netstandard2.1\CashewDocumentParser.Helpers.AssemblyInfo.cs
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\obj\Release\netstandard2.1\CashewDocumentParser.Helpers.csproj.CoreCompileInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\obj\Release\netstandard2.1\CashewDocumentParser.Helpers.csproj.CopyComplete
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\obj\Release\netstandard2.1\CashewDocumentParser.Helpers.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\obj\Release\netstandard2.1\CashewDocumentParser.Helpers.pdb

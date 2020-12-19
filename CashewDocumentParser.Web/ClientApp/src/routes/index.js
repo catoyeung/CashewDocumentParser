@@ -19,6 +19,8 @@ import Home from "../components/pages/Home"
 import ManageMain from "../components/manage/main"
 import ManageCreateExtractor from "../components/manage/extractor/create"
 import ManageUploadSampleDocument from "../components/manage/extractor/sample-document/upload"
+import ManageModifyExtractor from "../components/manage/extractor/modify"
+import ExtractorDocumentList from "../components/manage/extractor/modify/document"
 
 export default function Routes() {
   return (
@@ -37,6 +39,8 @@ export default function Routes() {
       <PrivateRoute path="/manage/main" exact component={ManageMain} layout={ManageLayout} />
       <PrivateRoute path="/manage/extractor/create" exact component={ManageCreateExtractor} layout={ManageLayout} />
       <PrivateRoute path="/manage/extractor/:templateId/sample-document/upload" exact component={ManageUploadSampleDocument} layout={ManageLayout} />
+      <PrivateRoute path="/manage/extractor/modify/:id" exact component={ManageModifyExtractor} layout={ManageLayout} />
+      <PrivateRoute path="/manage/extractor/modify/:id/document-list" exact component={ExtractorDocumentList} layout={ManageLayout} />
     </Switch>
   );
 }

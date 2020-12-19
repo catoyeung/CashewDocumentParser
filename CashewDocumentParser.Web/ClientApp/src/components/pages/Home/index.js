@@ -110,4 +110,4 @@ const Home = (props) => {
   )
 }
 
-export default withRouter(withStyles(useStyles)(Home))
+export default withRouter(Home)

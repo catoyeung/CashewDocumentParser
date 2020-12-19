@@ -13,6 +13,7 @@ import Footer from './footer'
 
 const useStyles = makeStyles((theme) => ({
   content: {
+    display: "flex",
     flex: 1
   }
 }));

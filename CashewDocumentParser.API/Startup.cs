@@ -7,6 +7,7 @@ using CashewDocumentParser.API.Helpers;
 using CashewDocumentParser.API.Middlewares;
 using CashewDocumentParser.Models;
 using CashewDocumentParser.Models.Infrastructure;
+using CashewDocumentParser.Models.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -60,9 +61,6 @@ namespace CashewDocumentParser.API
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = true;
-
-                // SignIn settings.
-                options.SignIn.RequireConfirmedEmail = true;
             });
 
             var key = Encoding.ASCII.GetBytes(Configuration["IdentitySetting:Secret"]);
@@ -111,7 +109,7 @@ namespace CashewDocumentParser.API
         {
             var emailConfig = Configuration
                 .GetSection("EmailConfiguration")
-                .Get<EmailConfiguration>();
+                .Get<SmtpConfiguration>();
             services.AddSingleton(emailConfig);
             services.AddScoped<IEmailSender, EmailSender>();
         }
@@ -127,9 +125,14 @@ namespace CashewDocumentParser.API
         private void ConfigureDependencyInjection(IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IExtractQueueRepository, ExtractQueueRepository>();
+            services.AddScoped<IImportQueueRepository, ImportQueueRepository>();
+            services.AddScoped<IIntegrationQueueRepository, IntegrationQueueRepository>();
+            services.AddScoped<IPreprocessingQueueRepository, PreprocessingQueueRepository>();
+            services.AddScoped<IProcessedQueueRepository, ProcessedQueueRepository>();
+            services.AddScoped<ITemplateRepository, TemplateRepository>();
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             ConfigureEntityFramework(services);
@@ -150,7 +153,7 @@ namespace CashewDocumentParser.API
                     "AllowOrigins",
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:63417")
+                        builder.SetIsOriginAllowed(host => true)
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials();
@@ -160,7 +163,6 @@ namespace CashewDocumentParser.API
             services.AddControllersWithViews();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -170,7 +172,6 @@ namespace CashewDocumentParser.API
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -178,9 +179,9 @@ namespace CashewDocumentParser.API
             app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseCors("AllowOrigins");
-
             app.UseMiddleware<JWTMiddleware>();
+
+            app.UseCors("AllowOrigins");
 
             app.UseAuthentication();
             app.UseAuthorization();

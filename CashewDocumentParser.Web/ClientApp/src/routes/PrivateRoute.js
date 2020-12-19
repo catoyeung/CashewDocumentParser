@@ -19,7 +19,7 @@ function PrivateRoute({ component: Component, ...rest }) {
             <Component {...props} />
           </Layout>
         ) : (
-            <Redirect to="/account/login" />
+            <Redirect to="/account/signin" />
           )
       }
     />

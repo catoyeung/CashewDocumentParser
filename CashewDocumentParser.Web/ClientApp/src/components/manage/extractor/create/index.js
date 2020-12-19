@@ -8,11 +8,12 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { TextField, Button, Snackbar } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert';
 
-import API from '../../../../API'
+import getAPI from '../../../../API'
 
 const useStyles = makeStyles((theme) => ({
   workBench: {
     padding: "15px",
+    width: "100%"
   },
   newExtractorFormDiv: {
     border: "1px dashed #e31a2f",
@@ -38,6 +39,8 @@ const ManageCreateExtractor = (props) => {
 
   const history = useHistory()
 
+  const API = getAPI(history)
+
   const context = React.useContext(AppContext)
 
   const classes = useStyles()
@@ -54,13 +57,19 @@ const ManageCreateExtractor = (props) => {
     setExtractorName(e.target.value)
   }
 
+  const cancelBtnClickHandler = () => {
+    history.push({
+      pathname: "/manage/main"
+    })
+  }
+
   const createBtnClickHandler = async () => {
     try {
       let data = {
         Name: extractorName
       }
       setRequestSent(true)
-      await API.post("Template/Create", data, {
+      await API.post("templates", data, {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
       }).then((res) => {
@@ -86,7 +95,7 @@ const ManageCreateExtractor = (props) => {
     <div className={classes.workBench}>
       <div className={classes.newExtractorFormDiv}>
         <Button className="btn"
-          onClick={createBtnClickHandler}
+          onClick={cancelBtnClickHandler}
           disabled={requestSent}
           variant="outlined" >Cancel</Button>
         <TextField
@@ -107,4 +116,4 @@ const ManageCreateExtractor = (props) => {
   )
 }
 
-export default withRouter(withStyles(useStyles)(ManageCreateExtractor))
+export default withRouter(ManageCreateExtractor)

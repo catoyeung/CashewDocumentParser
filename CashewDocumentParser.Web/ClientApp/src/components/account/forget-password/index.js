@@ -8,7 +8,7 @@ import { TextField, Button, FormControlLabel, Checkbox } from '@material-ui/core
 import { CheckBoxIcon } from '@material-ui/icons';
 import Alert from '@material-ui/lab/Alert'
 
-import API from '../../../API'
+import getAPI from '../../../API'
 
 const useStyles = makeStyles((theme) => ({
   loginForm: {
@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
 const ForgetPassword = () => {
 
   const history = useHistory()
+
+  const API = getAPI(history)
 
   const classes = useStyles();
 
@@ -61,7 +63,7 @@ const ForgetPassword = () => {
           ResetPasswordLink: process.env.REACT_APP_BASE_URL + "account/reset-password"
         }
         setRequestSent(true)
-        await API.post("Account/ForgetPassword", data, {
+        await API.post("account/forgetpassword", data, {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
         }).then((res) => {

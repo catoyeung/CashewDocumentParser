@@ -10,3 +10,5 @@ C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\ob
 C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\obj\Debug\netstandard2.1\CashewDocumentParser.Helpers.csproj.CopyComplete
 C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\obj\Debug\netstandard2.1\CashewDocumentParser.Helpers.dll
 C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\obj\Debug\netstandard2.1\CashewDocumentParser.Helpers.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\bin\Debug\netstandard2.1\CashewDocumentParser.Enumerations.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Helpers\bin\Debug\netstandard2.1\CashewDocumentParser.Enumerations.pdb

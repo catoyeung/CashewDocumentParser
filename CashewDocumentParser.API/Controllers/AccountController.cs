@@ -16,11 +16,12 @@ using CashewDocumentParser.Models;
 using CashewDocumentParser.ViewModels.Forms;
 using CashewDocumentParser.API.Helpers;
 using Microsoft.AspNetCore.Cors;
+using System.Transactions;
 
 namespace CashewDocumentParser.API.Controllers
 {
     [EnableCors("AllowOrigins")]
-    [Route("api/Account")]
+    [Route("api/account")]
     public class AccountController : Controller
     {
         private IConfiguration _config { get; set; }
@@ -43,46 +44,50 @@ namespace CashewDocumentParser.API.Controllers
             _emailSender = emailSender;
         }
 
-        [HttpPost("SignUp")]
+        [HttpPost("signup")]
         public async Task<IActionResult> SignUpAsync([FromBody]SignUpForm signUpForm)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {
-                    FirstName = signUpForm.FirstName,
-                    LastName = signUpForm.LastName,
-                    UserName = signUpForm.Email.Split("@")[0],
-                    Email = signUpForm.Email
-                };
-                var result = await _userManager.CreateAsync(user, signUpForm.Password);
-                if (result.Succeeded)
+                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
                 {
-                    _logger.LogInformation("User has completed user registration.");
-
-                    var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var encodedToken = HttpUtility.UrlEncode(token);
-
-                    var verificationLink = String.Format($"{signUpForm.VerifyEmailLink}?token={encodedToken}&email={user.Email}");
-
-                    _emailSender.SendRegisterVerificationEmail(user.FirstName + " " + user.LastName, user.Email, verificationLink);
-
-                    return Ok(new { user });
-                } else
-                {
-                    if (result.Errors.Count() > 0)
+                    try
                     {
-                        return BadRequest(new { errorMessage = result.Errors.First().Description });
+                        var user = new ApplicationUser
+                        {
+                            FirstName = signUpForm.FirstName,
+                            LastName = signUpForm.LastName,
+                            UserName = signUpForm.Email.Split("@")[0],
+                            Email = signUpForm.Email
+                        };
+                        var result = await _userManager.CreateAsync(user, signUpForm.Password);
+                        if (result.Succeeded)
+                        {
+                            scope.Complete();
+
+                            _logger.LogInformation("User has completed user registration.");
+
+                            return Ok(new { user });
+                        }
+                        else
+                        {
+                            if (result.Errors.Count() > 0)
+                            {
+                                return BadRequest(new { errorMessage = result.Errors.First().Description });
+                            }
+                        }
                     }
-                }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    catch (Exception ex)
+                    {
+                        scope.Dispose();
+                        return BadRequest(new { errorMessage = ex.Message });
+                    }
                 }
             }
             return BadRequest();
         }
 
-        [HttpPost("SignIn")]
+        [HttpPost("signin")]
         public async Task<IActionResult> SignInAsync([FromBody]SignInForm signInForm)
         {
             if (ModelState.IsValid)
@@ -122,7 +127,7 @@ namespace CashewDocumentParser.API.Controllers
                         {
                             HttpOnly = true,
                             SameSite = SameSiteMode.None,
-                            Secure = true
+                            Secure = false
                         }
                     );
 
@@ -141,7 +146,7 @@ namespace CashewDocumentParser.API.Controllers
         }
 
         [Authorize]
-        [HttpPost("ChangePassword")]
+        [HttpPost("changepassword")]
         public async Task<IActionResult> ChangePasswordAsync([FromBody]ChangePasswordForm changePasswordForm)
         {
             if (ModelState.IsValid)
@@ -180,35 +185,20 @@ namespace CashewDocumentParser.API.Controllers
             return BadRequest(new { errorMessage = "Please contact system administrator." });
         }
 
-        [HttpGet("AccessDenied")]
+        [HttpGet("accessdenied")]
         public IActionResult AccessDenied()
         {
             return BadRequest(new { errorMessage = "You are not authroized to access this page." });
         }
 
-        [Authorize]
-        [HttpPost("SignOut")]
+        [HttpPost("signout")]
         public async Task<IActionResult> SignOutAsync()
         {
             await _signInManager.SignOutAsync();
             return Ok();
         }
 
-        [HttpPost("VerifyEmail")]
-        public async Task<IActionResult> VerifyEmailAsync([FromBody]VerifyEmailForm verifyEmailForm)
-        {
-            var user = await _userManager.FindByEmailAsync(verifyEmailForm.Email);
-            if (user == null)
-                return BadRequest(new { errorMessage = "User account has not been registered." });
-
-            var result = await _userManager.ConfirmEmailAsync(user, verifyEmailForm.Token);
-
-            if (!result.Succeeded) return BadRequest(new { errorMessage = "Please contact system administrator." });
-
-            return Ok();
-        }
-
-        [HttpPost("ForgetPassword")]
+        [HttpPost("forgetpassword")]
         public async Task<IActionResult> ForgetPassword([FromBody]ForgotPasswordForm forgotPasswordForm)
         {
             if (!ModelState.IsValid)
@@ -226,7 +216,6 @@ namespace CashewDocumentParser.API.Controllers
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var encodedToken = HttpUtility.UrlEncode(token);
 
-            //var resetPasswordLink = String.Format($"{Request.Scheme}://{Request.Host}/api/Account/ResetPassword?token={encodedToken}&email={user.Email}");
             var resetPasswordLink = String.Format($"{forgotPasswordForm.ResetPasswordLink}?token={encodedToken}&email={user.Email}");
 
             _emailSender.SendPasswordResetEmail(user.FirstName + " " + user.LastName , forgotPasswordForm.Email, resetPasswordLink);
@@ -234,7 +223,7 @@ namespace CashewDocumentParser.API.Controllers
             return Ok();
         }
 
-        [HttpPost("ResetPassword")]
+        [HttpPost("resetpassword")]
         public async Task<IActionResult> ResetPassword([FromBody]ResetPasswordForm resetPasswordForm)
         {
             if (!ModelState.IsValid)

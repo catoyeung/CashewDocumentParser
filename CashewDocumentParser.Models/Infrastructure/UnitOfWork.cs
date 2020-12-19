@@ -8,33 +8,63 @@ namespace CashewDocumentParser.Models.Infrastructure
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ApplicationDbContext _applicationDbContext;
-        private IRepository<Template> _templateRepository;
-        private IRepository<SampleDocument> _sampleDocumentRepository;
+        public readonly ApplicationDbContext ApplicationDbContext;
+        public readonly ITemplateRepository TemplateRepository;
+        public readonly IExtractQueueRepository ExtractQueueRepository;
+        public readonly IImportQueueRepository ImportQueueRepository;
+        public readonly IIntegrationQueueRepository IntegrationQueueRepository;
+        public readonly IPreprocessingQueueRepository PreprocessingRepository;
+        public readonly IProcessedQueueRepository ProcessedQueueRepository;
 
-        public UnitOfWork(ApplicationDbContext dbContext)
+        public UnitOfWork(ApplicationDbContext applicationDbContext,
+            ITemplateRepository templateRepository,
+            IExtractQueueRepository extractQueueRepository,
+            IImportQueueRepository importQueueRepository,
+            IIntegrationQueueRepository integrationQueueRepository,
+            IPreprocessingQueueRepository preprocessingRepository,
+            IProcessedQueueRepository processedQueueRepository
+            )
         {
-            _applicationDbContext = dbContext; 
+            ApplicationDbContext = applicationDbContext;
+            TemplateRepository = templateRepository;
+            ExtractQueueRepository = extractQueueRepository;
+            ImportQueueRepository = importQueueRepository;
+            IntegrationQueueRepository = integrationQueueRepository;
+            PreprocessingRepository = preprocessingRepository;
+            ProcessedQueueRepository = processedQueueRepository;
         }
 
-        public IRepository<Template> TemplateRepository
+        public ITemplateRepository GetTemplateRepository()
         {
-            get { return _templateRepository = _templateRepository ?? new TemplateRepository(_applicationDbContext); }
+            return TemplateRepository;
         }
-
-        public IRepository<SampleDocument> SampleDocumentRepository
+        public IExtractQueueRepository GetExtractQueueRepository()
         {
-            get { return _sampleDocumentRepository = _sampleDocumentRepository ?? new SampleDocumentRepository(_applicationDbContext); }
+            return ExtractQueueRepository;
         }
-
+        public IImportQueueRepository GetImportQueueRepository()
+        {
+            return ImportQueueRepository;
+        }
+        public IIntegrationQueueRepository GetIntegrationQueueRepository()
+        {
+            return IntegrationQueueRepository;
+        }
+        public IPreprocessingQueueRepository GetPreprocessingRepository()
+        {
+            return PreprocessingRepository;
+        }
+        public IProcessedQueueRepository GetProcessedQueueRepository()
+        {
+            return ProcessedQueueRepository;
+        }
         public async Task Commit()
         { 
-            await _applicationDbContext.SaveChangesAsync();
+            await ApplicationDbContext.SaveChangesAsync();
         }
-
         public async Task Rollback()
         { 
-            await _applicationDbContext.DisposeAsync(); 
+            await ApplicationDbContext.DisposeAsync(); 
         }
     }
 }

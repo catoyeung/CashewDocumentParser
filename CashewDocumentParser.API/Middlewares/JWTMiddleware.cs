@@ -27,7 +27,7 @@ namespace CashewDocumentParser.API.Middlewares
         {
             var authenticationCookieName = "access_token";
             var accessToken = context.Request.Cookies[authenticationCookieName];
-            if (accessToken != null)
+           if (accessToken != null)
             {
                 context.Request.Headers.Append("Authorization", "Bearer " + accessToken);
             }

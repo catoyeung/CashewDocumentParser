@@ -9,7 +9,7 @@ import clsx from 'clsx'
 import { TextField, Button } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 
-import API from '../../../API'
+import getAPI from '../../../API'
 
 const useStyles = makeStyles((theme) => ({
   verifyEmailForm: {
@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 const VerifyEmail = (props) => {
 
   const history = useHistory()
+
+  const API = getAPI(history)
 
   const classes = useStyles();
 

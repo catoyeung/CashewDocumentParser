@@ -7,6 +7,7 @@
     <IsPackable>false</IsPackable>
     <SpaRoot>ClientApp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+    <UserSecretsId>edeb8614-5fa0-4b53-9056-a1e7f53dac43</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,7 +31,6 @@
   <ItemGroup>
     <Folder Include="ClientApp\src\components\manage\extractor\modify\" />
     <Folder Include="ClientApp\src\helpers\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

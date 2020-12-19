@@ -5,7 +5,11 @@ using System.Text;
 
 namespace CashewDocumentParser.Models.Repositories
 {
-    public class TemplateRepository : Repository<Template, ApplicationDbContext>
+    public interface ITemplateRepository : IRepository<Template>
+    {
+
+    }
+    public class TemplateRepository : Repository<Template, ApplicationDbContext>, ITemplateRepository
     {
         public TemplateRepository(ApplicationDbContext context) : base(context)
         {

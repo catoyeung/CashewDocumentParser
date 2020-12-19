@@ -37,7 +37,7 @@ const SignUpComplete = (props) => {
       </div>
       <div className="formActionDiv">
         <Button className="btn"
-                onClick={loginBtnClickHandler}>CHECK EMAIL AND THEN LOGIN</Button>
+                onClick={loginBtnClickHandler}>LOGIN</Button>
       </div>
     </div>
   )
