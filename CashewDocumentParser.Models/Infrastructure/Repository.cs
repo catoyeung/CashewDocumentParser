@@ -35,6 +35,12 @@ namespace CashewDocumentParser.Models.Infrastructure
             return entity;
         }
 
+        public void Delete(Func<TEntity, bool> conditions)
+        {
+            var entities = context.Set<TEntity>().Where(conditions).ToList();
+            context.Set<TEntity>().RemoveRange(entities);
+        }
+
         public async Task<TEntity> Get(int id)
         {
             return await context.Set<TEntity>().FindAsync(id);
@@ -60,6 +66,5 @@ namespace CashewDocumentParser.Models.Infrastructure
             context.Entry(entity).State = EntityState.Modified;
             return entity;
         }
-
     }
 }

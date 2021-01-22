@@ -1,4 +1,5 @@
-﻿using CashewDocumentParser.Models.Infrastructure;
+﻿using CashewDocumentParser.Enumerations;
+using CashewDocumentParser.Models.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -22,5 +23,7 @@ namespace CashewDocumentParser.Models
         public string Extension { get; set; }
         [Required]
         public string Fullpath { get; set; }
+        [Required]
+        public EnumProcessStage ProcessStage { get; set; }
     }
 }

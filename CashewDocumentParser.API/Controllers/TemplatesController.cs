@@ -20,6 +20,7 @@ using CashewDocumentParser.Models.Infrastructure;
 using System.IO;
 using CashewDocumentParser.API.Configurations;
 using System.Collections.Generic;
+using CashewDocumentParser.Enumerations;
 
 namespace CashewDocumentParser.API.Controllers
 {
@@ -169,7 +170,8 @@ namespace CashewDocumentParser.API.Controllers
                             TemplateId = templateId,
                             FilenameWithoutExtension = Path.GetFileNameWithoutExtension(file.FileName),
                             Extension = extension,
-                            Fullpath = _documentConfig.RootPath + guid.ToString() + "." + extension
+                            Fullpath = _documentConfig.RootPath + guid.ToString() + "." + extension,
+                            ProcessStage = EnumProcessStage.Preprocess
                         };
                         newImportDocuments.Add(newImportDocument);
                         _unitOfWork.GetImportQueueRepository().Add(newImportDocument);

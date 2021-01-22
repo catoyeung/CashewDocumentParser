@@ -9,11 +9,14 @@ namespace CashewDocumentParser.Models.Infrastructure
     public interface IUnitOfWork
     {
         ITemplateRepository GetTemplateRepository();
+        IClassificationQueueRepository GetClassificationQueueRepository();
         IExtractQueueRepository GetExtractQueueRepository();
         IImportQueueRepository GetImportQueueRepository();
         IIntegrationQueueRepository GetIntegrationQueueRepository();
-        IPreprocessingQueueRepository GetPreprocessingRepository();
+        IOCRQueueRepository GetOCRQueueRepository();
+        IPreprocessingQueueRepository GetPreprocessingQueueRepository();
         IProcessedQueueRepository GetProcessedQueueRepository();
+        IScriptingQueueRepository GetScriptingQueueRepository();
         Task Commit();
         Task Rollback();
     }

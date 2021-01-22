@@ -59,6 +59,11 @@ namespace CashewDocumentParser.Models
                 b.ToTable("TB_Template");
             });
 
+            modelBuilder.Entity<ClassificationQueue>(b =>
+            {
+                b.ToTable("TB_ClassificationQueue");
+            });
+
             modelBuilder.Entity<ExtractQueue>(b =>
             {
                 b.ToTable("TB_ExtractQueue");
@@ -69,14 +74,24 @@ namespace CashewDocumentParser.Models
                 b.ToTable("TB_ImportQueue");
             });
 
-            modelBuilder.Entity<IntegrationQueue>(b =>
+            modelBuilder.Entity<OCRQueue>(b =>
             {
-                b.ToTable("TB_IntegrationQueue");
+                b.ToTable("TB_OCRQueue");
             });
 
             modelBuilder.Entity<PreprocessingQueue>(b =>
             {
                 b.ToTable("TB_PreprocessingQueue");
+            });
+
+            modelBuilder.Entity<ScriptingQueue>(b =>
+            {
+                b.ToTable("TB_ScriptingQueue");
+            });
+
+            modelBuilder.Entity<IntegrationQueue>(b =>
+            {
+                b.ToTable("TB_IntegrationQueue");
             });
 
             modelBuilder.Entity<ProcessedQueue>(b =>

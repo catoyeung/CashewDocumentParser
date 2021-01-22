@@ -47,6 +47,27 @@ namespace CashewDocumentParser.API.Controllers
             _logger = logger;
         }
 
+        [HttpGet("api/templates/{templateId}/processedqueue")]
+        public async Task<IActionResult> GetAllProcessedQueuesAsync(int templateId)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var templates = _unitOfWork.GetProcessedQueueRepository().GetMultiple(q => q.TemplateId == templateId);
+                    return Ok(templates);
+                }
+                catch (Exception ex)
+                {
+                    var errorMessage = $"{ex.Message}";
+                    _logger.LogError(errorMessage);
+                    await _unitOfWork.Rollback();
+                    return BadRequest(errorMessage);
+                }
+            }
+            return BadRequest();
+        }
+
         [HttpGet("api/templates/{templateId}/importqueue")]
         public async Task<IActionResult> GetAllImportQueuesAsync(int templateId)
         {
@@ -55,6 +76,69 @@ namespace CashewDocumentParser.API.Controllers
                 try
                 {
                     var templates = _unitOfWork.GetImportQueueRepository().GetMultiple(q => q.TemplateId == templateId);
+                    return Ok(templates);
+                }
+                catch (Exception ex)
+                {
+                    var errorMessage = $"{ex.Message}";
+                    _logger.LogError(errorMessage);
+                    await _unitOfWork.Rollback();
+                    return BadRequest(errorMessage);
+                }
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("api/templates/{templateId}/preprocessingqueue")]
+        public async Task<IActionResult> GetAllPreprocessingQueuesAsync(int templateId)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var templates = _unitOfWork.GetPreprocessingQueueRepository().GetMultiple(q => q.TemplateId == templateId);
+                    return Ok(templates);
+                }
+                catch (Exception ex)
+                {
+                    var errorMessage = $"{ex.Message}";
+                    _logger.LogError(errorMessage);
+                    await _unitOfWork.Rollback();
+                    return BadRequest(errorMessage);
+                }
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("api/templates/{templateId}/extractqueue")]
+        public async Task<IActionResult> GetAllExtractQueuesAsync(int templateId)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var templates = _unitOfWork.GetExtractQueueRepository().GetMultiple(q => q.TemplateId == templateId);
+                    return Ok(templates);
+                }
+                catch (Exception ex)
+                {
+                    var errorMessage = $"{ex.Message}";
+                    _logger.LogError(errorMessage);
+                    await _unitOfWork.Rollback();
+                    return BadRequest(errorMessage);
+                }
+            }
+            return BadRequest();
+        }
+
+        [HttpGet("api/templates/{templateId}/integrationqueue")]
+        public async Task<IActionResult> GetAllIntegrationQueuesAsync(int templateId)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var templates = _unitOfWork.GetIntegrationQueueRepository().GetMultiple(q => q.TemplateId == templateId);
                     return Ok(templates);
                 }
                 catch (Exception ex)

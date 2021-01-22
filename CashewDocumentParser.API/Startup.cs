@@ -8,6 +8,7 @@ using CashewDocumentParser.API.Middlewares;
 using CashewDocumentParser.Models;
 using CashewDocumentParser.Models.Infrastructure;
 using CashewDocumentParser.Models.Repositories;
+using CashewDocumentParser.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +19,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Hangfire;
 
 namespace CashewDocumentParser.API
 {
@@ -131,6 +133,28 @@ namespace CashewDocumentParser.API
             services.AddScoped<IPreprocessingQueueRepository, PreprocessingQueueRepository>();
             services.AddScoped<IProcessedQueueRepository, ProcessedQueueRepository>();
             services.AddScoped<ITemplateRepository, TemplateRepository>();
+
+            services.AddScoped<IQueueService, QueueService>();
+        }
+
+        private void ConfigureHangfire(IServiceCollection services)
+        {
+            // Add Hangfire services.
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+
+            // Add the processing server as IHostedService
+            services.AddHangfireServer();
+        }
+
+        private void ConfigureBackgroundJobs(IServiceProvider serviceProvider)
+        {
+            var queueService = serviceProvider.GetRequiredService<IQueueService>();
+            RecurringJob.AddOrUpdate<IQueueService>(queueService => queueService.MoveFromProcessedToImport(), Cron.Minutely);
+            RecurringJob.AddOrUpdate<IQueueService>(queueService => queueService.MoveFromImportToPreprocessing(), Cron.Minutely);
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -146,6 +170,8 @@ namespace CashewDocumentParser.API
             ConfigureDocument(services);
 
             ConfigureDependencyInjection(services);
+
+            ConfigureHangfire(services);
 
             services.AddCors(options =>
             {
@@ -163,7 +189,10 @@ namespace CashewDocumentParser.API
             services.AddControllersWithViews();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, 
+            IBackgroundJobClient backgroundJobs, 
+            IWebHostEnvironment env,
+            IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -179,12 +208,28 @@ namespace CashewDocumentParser.API
             app.UseStaticFiles();
             app.UseRouting();
 
+            app.UseHangfireDashboard();
+            app.UseHangfireServer(new BackgroundJobServerOptions
+            {
+                HeartbeatInterval = new TimeSpan(0, 0, 5),
+                ServerCheckInterval = new TimeSpan(0, 0, 5),
+                SchedulePollingInterval = new TimeSpan(0, 0, 5)
+            });
+
+            ConfigureBackgroundJobs(serviceProvider);
+
             app.UseMiddleware<JWTMiddleware>();
 
             app.UseCors("AllowOrigins");
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHangfireDashboard();
+            });
 
             app.UseEndpoints(endpoints =>
             {

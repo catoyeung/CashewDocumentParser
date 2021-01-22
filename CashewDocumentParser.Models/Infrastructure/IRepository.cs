@@ -14,5 +14,6 @@ namespace CashewDocumentParser.Models.Infrastructure
         T Add(T entity);
         T Update(T entity);
         Task<T> Delete(int id);
+        void Delete(Func<T, bool> conditions);
     }
 }

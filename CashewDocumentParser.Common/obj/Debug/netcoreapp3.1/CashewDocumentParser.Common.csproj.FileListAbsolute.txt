@@ -1,0 +1,9 @@
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Common\obj\Debug\netcoreapp3.1\CashewDocumentParser.Common.csprojAssemblyReference.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Common\obj\Debug\netcoreapp3.1\CashewDocumentParser.Common.AssemblyInfoInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Common\obj\Debug\netcoreapp3.1\CashewDocumentParser.Common.AssemblyInfo.cs
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Common\obj\Debug\netcoreapp3.1\CashewDocumentParser.Common.csproj.CoreCompileInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Common\bin\Debug\netcoreapp3.1\CashewDocumentParser.Common.deps.json
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Common\bin\Debug\netcoreapp3.1\CashewDocumentParser.Common.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Common\bin\Debug\netcoreapp3.1\CashewDocumentParser.Common.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Common\obj\Debug\netcoreapp3.1\CashewDocumentParser.Common.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Common\obj\Debug\netcoreapp3.1\CashewDocumentParser.Common.pdb

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "aQmmv5GqJWRyY7dx+0UiUbEyYoLBLiOIC52QwWI90AO7UaLXwGD2fDeLRqH1gG1LHq9gr3IGI5i8+X91n3GDVQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\catoy\\source\\repos\\CashewDocumentParser\\CashewDocumentParser.Tests\\CashewDocumentParser.Tests.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\catoy\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\catoy\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.10\\microsoft.netcore.app.host.win-x64.3.1.10.nupkg.sha512"
+  ],
+  "logs": []
+}

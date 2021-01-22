@@ -1,0 +1,16 @@
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\obj\Debug\netcoreapp3.1\CashewDocumentParser.Services.csprojAssemblyReference.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\obj\Debug\netcoreapp3.1\CashewDocumentParser.Services.AssemblyInfoInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\obj\Debug\netcoreapp3.1\CashewDocumentParser.Services.AssemblyInfo.cs
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\obj\Debug\netcoreapp3.1\CashewDocumentParser.Services.csproj.CoreCompileInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\bin\Debug\netcoreapp3.1\CashewDocumentParser.Services.deps.json
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\bin\Debug\netcoreapp3.1\CashewDocumentParser.Services.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\bin\Debug\netcoreapp3.1\CashewDocumentParser.Services.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\bin\Debug\netcoreapp3.1\CashewDocumentParser.Common.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\bin\Debug\netcoreapp3.1\CashewDocumentParser.Enumerations.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\bin\Debug\netcoreapp3.1\CashewDocumentParser.Models.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\bin\Debug\netcoreapp3.1\CashewDocumentParser.Common.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\bin\Debug\netcoreapp3.1\CashewDocumentParser.Enumerations.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\bin\Debug\netcoreapp3.1\CashewDocumentParser.Models.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\obj\Debug\netcoreapp3.1\CashewDocumentParser.Services.csproj.CopyComplete
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\obj\Debug\netcoreapp3.1\CashewDocumentParser.Services.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Services\obj\Debug\netcoreapp3.1\CashewDocumentParser.Services.pdb

@@ -169,6 +169,7 @@ const DefaultHeader = (props) => {
       try {
         localStorage.removeItem("isAuthenticated")
         context.setIsAuthenticated(false)
+        props.history.push("")
       } catch {
 
       }

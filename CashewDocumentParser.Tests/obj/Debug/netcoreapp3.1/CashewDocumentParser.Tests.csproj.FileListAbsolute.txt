@@ -1,0 +1,15 @@
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\bin\Debug\netcoreapp3.1\CashewDocumentParser.Tests.exe
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\bin\Debug\netcoreapp3.1\CashewDocumentParser.Tests.deps.json
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\bin\Debug\netcoreapp3.1\CashewDocumentParser.Tests.runtimeconfig.json
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\bin\Debug\netcoreapp3.1\CashewDocumentParser.Tests.runtimeconfig.dev.json
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\bin\Debug\netcoreapp3.1\CashewDocumentParser.Tests.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\bin\Debug\netcoreapp3.1\CashewDocumentParser.Tests.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\obj\Debug\netcoreapp3.1\CashewDocumentParser.Tests.csprojAssemblyReference.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\obj\Debug\netcoreapp3.1\CashewDocumentParser.Tests.AssemblyInfoInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\obj\Debug\netcoreapp3.1\CashewDocumentParser.Tests.AssemblyInfo.cs
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\obj\Debug\netcoreapp3.1\CashewDocumentParser.Tests.csproj.CoreCompileInputs.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\obj\Debug\netcoreapp3.1\CashewDocumentParser.Tests.dll
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\obj\Debug\netcoreapp3.1\CashewDocumentParser.Tests.pdb
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\obj\Debug\netcoreapp3.1\CashewDocumentParser.Tests.genruntimeconfig.cache
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\bin\Debug\netcoreapp3.1\PDFs\Agility.pdf
+C:\Users\catoy\source\repos\CashewDocumentParser\CashewDocumentParser.Tests\bin\Debug\netcoreapp3.1\PDFs\Agility.jpg

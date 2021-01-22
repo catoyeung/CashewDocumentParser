@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.18" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.18" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
@@ -22,7 +24,12 @@
   <ItemGroup>
     <ProjectReference Include="..\CashewDocumentParser.Helpers\CashewDocumentParser.Helpers.csproj" />
     <ProjectReference Include="..\CashewDocumentParser.Models\CashewDocumentParser.Models.csproj" />
+    <ProjectReference Include="..\CashewDocumentParser.Services\CashewDocumentParser.Services.csproj" />
     <ProjectReference Include="..\CashewDocumentParser.ViewModels\CashewDocumentParser.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="HangFire\" />
   </ItemGroup>
 
 

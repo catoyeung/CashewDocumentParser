@@ -28,8 +28,4 @@
     <ProjectReference Include="..\CashewDocumentParser.Enumerations\CashewDocumentParser.Enumerations.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

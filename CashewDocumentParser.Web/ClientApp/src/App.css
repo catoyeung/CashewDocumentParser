@@ -44,3 +44,6 @@
 .MuiListItemIcon-root {
   min-width: 30px;
 }
+button.MuiTab-root {
+  min-width: unset;
+}

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -11,8 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.18" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.18" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.6.0" />
   </ItemGroup>
 
@@ -24,13 +30,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CashewDocumentParser.Common\CashewDocumentParser.Common.csproj" />
+    <ProjectReference Include="..\CashewDocumentParser.Helpers\CashewDocumentParser.Helpers.csproj" />
     <ProjectReference Include="..\CashewDocumentParser.Models\CashewDocumentParser.Models.csproj" />
+    <ProjectReference Include="..\CashewDocumentParser.Services\CashewDocumentParser.Services.csproj" />
     <ProjectReference Include="..\CashewDocumentParser.ViewModels\CashewDocumentParser.ViewModels.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ClientApp\src\components\manage\extractor\modify\" />
     <Folder Include="ClientApp\src\helpers\" />
+    <Folder Include="PythonScripts\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

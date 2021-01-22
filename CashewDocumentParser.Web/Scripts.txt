@@ -1,0 +1,3 @@
+﻿dotnet ef database update --project .\CashewDocumentParser.Models --startup-project .\CashewDocumentParser.Web
+
+dotnet ef migrations add AddedQueues --project .\CashewDocumentParser.Models --startup-project .\CashewDocumentParser.Web

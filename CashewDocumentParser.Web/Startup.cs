@@ -16,6 +16,11 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using CashewDocumentParser.Models;
 using CashewDocumentParser.Web.Configurations;
 using CashewDocumentParser.Web.Helpers;
+using CashewDocumentParser.Models.Infrastructure;
+using CashewDocumentParser.Models.Repositories;
+using CashewDocumentParser.Services;
+using Hangfire;
+using CashewDocumentParser.Web.Middlewares;
 
 namespace CashewDocumentParser.Web
 {
@@ -59,9 +64,6 @@ namespace CashewDocumentParser.Web
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = true;
-
-                // SignIn settings.
-                options.SignIn.RequireConfirmedEmail = true;
             });
 
             var key = Encoding.ASCII.GetBytes(Configuration["IdentitySetting:Secret"]);
@@ -90,8 +92,8 @@ namespace CashewDocumentParser.Web
             {
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
-                options.LoginPath = "/api/Account/Login";
-                options.AccessDeniedPath = "/api/Account/AccessDenied";
+                options.LoginPath = "/account/signin";
+                options.AccessDeniedPath = "/account/accessdenied";
                 options.SlidingExpiration = true;
 
                 options.Events = new CookieAuthenticationEvents
@@ -114,6 +116,43 @@ namespace CashewDocumentParser.Web
             services.AddScoped<IEmailSender, EmailSender>();
         }
 
+        private void ConfigureDependencyInjection(IServiceCollection services)
+        {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IClassificationQueueRepository, ClassificationQueueRepository>();
+            services.AddScoped<IExtractQueueRepository, ExtractQueueRepository>();
+            services.AddScoped<IImportQueueRepository, ImportQueueRepository>();
+            services.AddScoped<IIntegrationQueueRepository, IntegrationQueueRepository>();
+            services.AddScoped<IOCRQueueRepository, OCRQueueRepository>();
+            services.AddScoped<IPreprocessingQueueRepository, PreprocessingQueueRepository>();
+            services.AddScoped<IProcessedQueueRepository, ProcessedQueueRepository>();
+            services.AddScoped<IScriptingQueueRepository, ScriptingQueueRepository>();
+            services.AddScoped<ITemplateRepository, TemplateRepository>();
+
+            services.AddScoped<IQueueService, QueueService>();
+        }
+
+        private void ConfigureHangfire(IServiceCollection services)
+        {
+            // Add Hangfire services.
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+
+            // Add the processing server as IHostedService
+            services.AddHangfireServer();
+        }
+
+        private void ConfigureBackgroundJobs(IServiceProvider serviceProvider)
+        {
+            var queueService = serviceProvider.GetRequiredService<IQueueService>();
+            RecurringJob.AddOrUpdate<IQueueService>(queueService => queueService.MoveFromProcessedToImport(), Cron.Minutely);
+            RecurringJob.AddOrUpdate<IQueueService>(queueService => queueService.MoveFromImportToOCR(), Cron.Minutely);
+            RecurringJob.AddOrUpdate<IQueueService>(queueService => queueService.ProcessOCRQueue(), Cron.Minutely);
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -125,7 +164,22 @@ namespace CashewDocumentParser.Web
 
             ConfigureEmail(services);
 
-            services.AddCors();
+            ConfigureDependencyInjection(services);
+
+            ConfigureHangfire(services);
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    "AllowOrigins",
+                    builder =>
+                    {
+                        builder.SetIsOriginAllowed(host => true)
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+            });
 
             services.AddControllersWithViews();
 
@@ -137,7 +191,10 @@ namespace CashewDocumentParser.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app,
+            IBackgroundJobClient backgroundJobs,
+            IWebHostEnvironment env,
+            IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -155,6 +212,23 @@ namespace CashewDocumentParser.Web
             app.UseSpaStaticFiles();
 
             app.UseRouting();
+
+            app.UseHangfireDashboard();
+            app.UseHangfireServer(new BackgroundJobServerOptions
+            {
+                HeartbeatInterval = new TimeSpan(0, 0, 5),
+                ServerCheckInterval = new TimeSpan(0, 0, 5),
+                SchedulePollingInterval = new TimeSpan(0, 0, 5)
+            });
+
+            ConfigureBackgroundJobs(serviceProvider);
+
+            app.UseMiddleware<JWTMiddleware>();
+
+            app.UseCors("AllowOrigins");
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

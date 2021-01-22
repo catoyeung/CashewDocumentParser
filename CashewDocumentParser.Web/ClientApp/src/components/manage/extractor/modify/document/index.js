@@ -89,13 +89,13 @@ const ExtractorDocumentList = (props) => {
 
   const classes = useStyles()
 
-  const [extractorName, setExtractorName] = useState("")
-
-  const [requestSent, setRequestSent] = useState(false)
-
   const [tabIndex, setTabIndex] = useState(0)
 
+  const [processedQueue, setProcessedQueue] = useState([])
   const [importQueue, setImportQueue] = useState([])
+  const [preprocessingQueue, setPreprocessingQueue] = useState([])
+  const [extractQueue, setExtractQueue] = useState([])
+  const [integrationQueue, setIntegrationQueue] = useState([])
 
   const actionOptions = [
     { value: 'moveToPreprocessingQueue', label: 'Move to Preprocessing Queue' },
@@ -105,6 +105,22 @@ const ExtractorDocumentList = (props) => {
   ]
 
   useEffect(() => {
+    loadProcessedQueue()
+  }, []);
+
+  const loadProcessedQueue = () => {
+    API.get("templates/" + props.match.params.id + "/processedqueue").then((res) => {
+      setProcessedQueue(res.data)
+    }).catch(error => {
+      if (error.response?.data) {
+        context.setErrorMessage(error.response.data.errorMessage)
+      } else {
+        context.setErrorMessage("Sorry, something went wrong. Please contact system administrator")
+      }
+    })
+  }
+
+  const loadImportQueue = () => {
     API.get("templates/" + props.match.params.id + "/importqueue").then((res) => {
       setImportQueue(res.data)
     }).catch(error => {
@@ -114,9 +130,50 @@ const ExtractorDocumentList = (props) => {
         context.setErrorMessage("Sorry, something went wrong. Please contact system administrator")
       }
     })
-  }, []);
+  }
+
+  const loadPreprocessingQueue = () => {
+    API.get("templates/" + props.match.params.id + "/preprocessingqueue").then((res) => {
+      setPreprocessingQueue(res.data)
+    }).catch(error => {
+      if (error.response?.data) {
+        context.setErrorMessage(error.response.data.errorMessage)
+      } else {
+        context.setErrorMessage("Sorry, something went wrong. Please contact system administrator")
+      }
+    })
+  }
+
+  const loadExtractQueue = () => {
+    API.get("templates/" + props.match.params.id + "/extractqueue").then((res) => {
+      setExtractQueue(res.data)
+    }).catch(error => {
+      if (error.response?.data) {
+        context.setErrorMessage(error.response.data.errorMessage)
+      } else {
+        context.setErrorMessage("Sorry, something went wrong. Please contact system administrator")
+      }
+    })
+  }
+
+  const loadIntegrationQueue = () => {
+    API.get("templates/" + props.match.params.id + "/integrationqueue").then((res) => {
+      setIntegrationQueue(res.data)
+    }).catch(error => {
+      if (error.response?.data) {
+        context.setErrorMessage(error.response.data.errorMessage)
+      } else {
+        context.setErrorMessage("Sorry, something went wrong. Please contact system administrator")
+      }
+    })
+  }
 
   const handleTabChange = (event, newTabIndex) => {
+    if (newTabIndex == 0) loadProcessedQueue()
+    else if (newTabIndex == 1) loadImportQueue()
+    else if (newTabIndex == 2) loadPreprocessingQueue()
+    else if (newTabIndex == 3) loadExtractQueue()
+    else if (newTabIndex == 4) loadIntegrationQueue()
     setTabIndex(newTabIndex);
   };
 
@@ -147,6 +204,18 @@ const ExtractorDocumentList = (props) => {
     );
   }
 
+  const allProcessedQueueChecked = () => {
+    if (processedQueue.length == 0) return false
+    let isChecked = true
+    for(const processedQueueItem of processedQueue) {
+      if(processedQueueItem.checked == undefined)
+        isChecked = false;
+      if(processedQueueItem.checked == false)
+        isChecked = false;
+    }
+    return isChecked
+  }
+
   const allImportQueueChecked = () => {
     if (importQueue.length == 0) return false
     let isChecked = true
@@ -159,18 +228,120 @@ const ExtractorDocumentList = (props) => {
     return isChecked
   }
 
+  const allPreprocessingQueueChecked = () => {
+    if (preprocessingQueue.length == 0) return false
+    let isChecked = true
+    for(const preprocessingQueueItem of preprocessingQueue) {
+      if(preprocessingQueueItem.checked == undefined)
+        isChecked = false;
+      if(preprocessingQueueItem.checked == false)
+        isChecked = false;
+    }
+    return isChecked
+  }
+
+  const allExtractQueueChecked = () => {
+    if (extractQueue.length == 0) return false
+    let isChecked = true
+    for(const extractQueueItem of extractQueue) {
+      if(extractQueueItem.checked == undefined)
+        isChecked = false;
+      if(extractQueueItem.checked == false)
+        isChecked = false;
+    }
+    return isChecked
+  }
+
+  const allIntegrationQueueChecked = () => {
+    if (integrationQueue.length == 0) return false
+    let isChecked = true
+    for(const integrationQueueItem of integrationQueue) {
+      if(integrationQueueItem.checked == undefined)
+        isChecked = false;
+      if(integrationQueueItem.checked == false)
+        isChecked = false;
+    }
+    return isChecked
+  }
+
+  const processedQueueAllCheckboxChangeHandler = () => {
+    const newProcessedQueue = [...processedQueue]
+    if (allProcessedQueueChecked()) {
+      for(const processedQueueItem of processedQueue) {
+        processedQueueItem.checked = false
+      }
+    } else {
+      for(const processedQueueItem of processedQueue) {
+        processedQueueItem.checked = true
+      }
+    }
+    setProcessedQueue(newProcessedQueue)
+  }
+
   const importQueueAllCheckboxChangeHandler = () => {
     const newImportQueue = [...importQueue]
     if (allImportQueueChecked()) {
-      for(const importQueueItem of importQueue) {
+      for(const importQueueItem of newImportQueue) {
         importQueueItem.checked = false
       }
     } else {
-      for(const importQueueItem of importQueue) {
+      for(const importQueueItem of newImportQueue) {
         importQueueItem.checked = true
       }
     }
     setImportQueue(newImportQueue)
+  }
+
+  const preprocessingQueueAllCheckboxChangeHandler = () => {
+    const newPreprocessingQueue = [...preprocessingQueue]
+    if (allPreprocessingQueueChecked()) {
+      for(const preprocessingQueueItem of newPreprocessingQueue) {
+        preprocessingQueueItem.checked = false
+      }
+    } else {
+      for(const preprocessingQueueItem of newPreprocessingQueue) {
+        preprocessingQueueItem.checked = true
+      }
+    }
+    setPreprocessingQueue(newPreprocessingQueue)
+  }
+
+  const extractQueueAllCheckboxChangeHandler = () => {
+    const newExtractQueue = [...extractQueue]
+    if (allExtractQueueChecked()) {
+      for(const newExtractQueueItem of newExtractQueue) {
+        newExtractQueueItem.checked = false
+      }
+    } else {
+      for(const newExtractQueueItem of newExtractQueue) {
+        newExtractQueueItem.checked = true
+      }
+    }
+    setExtractQueue(newExtractQueue)
+  }
+
+  const integrationQueueAllCheckboxChangeHandler = () => {
+    const newIntegrationQueue = [...integrationQueue]
+    if (allIntegrationQueueChecked()) {
+      for(const integrationQueueItem of newIntegrationQueue) {
+        integrationQueueItem.checked = false
+      }
+    } else {
+      for(const integrationQueueItem of newIntegrationQueue) {
+        integrationQueueItem.checked = true
+      }
+    }
+    setIntegrationQueue(newIntegrationQueue)
+  }
+
+  const processedQueueCheckboxChangeHandler = (processedQueueIndex) => {
+    const newProcessedQueue = [...processedQueue]
+    if (newProcessedQueue[processedQueueIndex].checked == undefined) {
+      newProcessedQueue[processedQueueIndex].checked = true
+    } else {
+      newProcessedQueue[processedQueueIndex].checked = !newProcessedQueue[processedQueueIndex].checked
+    }
+    setProcessedQueue(newProcessedQueue)
   }
 
   const importQueueCheckboxChangeHandler = (importQueueIndex) => {
@@ -181,6 +352,36 @@ const ExtractorDocumentList = (props) => {
       newImportQueue[importQueueIndex].checked = !newImportQueue[importQueueIndex].checked
     }
     setImportQueue(newImportQueue)
+  }
+
+  const preprocessingQueueCheckboxChangeHandler = (preprocessingQueueIndex) => {
+    const newPreprocessingQueue = [...preprocessingQueue]
+    if (newPreprocessingQueue[preprocessingQueueIndex].checked == undefined) {
+      newPreprocessingQueue[preprocessingQueueIndex].checked = true
+    } else {
+      newPreprocessingQueue[preprocessingQueueIndex].checked = !newPreprocessingQueue[preprocessingQueueIndex].checked
+    }
+    setPreprocessingQueue(newPreprocessingQueue)
+  }
+
+  const extractQueueCheckboxChangeHandler = (extractQueueIndex) => {
+    const newExtractQueue = [...extractQueue]
+    if (newExtractQueue[extractQueueIndex].checked == undefined) {
+      newExtractQueue[extractQueueIndex].checked = true
+    } else {
+      newExtractQueue[extractQueueIndex].checked = !newExtractQueue[extractQueueIndex].checked
+    }
+    setExtractQueue(newExtractQueue)
+  }
+
+  const integrationQueueCheckboxChangeHandler = (integrationQueueIndex) => {
+    const newIntegrationQueue = [...integrationQueue]
+    if (newIntegrationQueue[integrationQueueIndex].checked == undefined) {
+      newIntegrationQueue[integrationQueueIndex].checked = true
+    } else {
+      newIntegrationQueue[integrationQueueIndex].checked = !newIntegrationQueue[integrationQueueIndex].checked
+    }
+    setIntegrationQueue(newIntegrationQueue)
   }
 
   return (
@@ -197,11 +398,13 @@ const ExtractorDocumentList = (props) => {
                 value={tabIndex} 
                 onChange={handleTabChange} 
                 aria-label="simple tabs example">
-                <Tab label="Processed Queue" {...switchTab(0)} />
-                <Tab label="Import Queue" {...switchTab(1)} />
-                <Tab label="Preprocessing Queue" {...switchTab(2)} />
-                <Tab label="Extract Queue" {...switchTab(3)} />
-                <Tab label="Integration Queue" {...switchTab(4)} />
+                <Tab label="Processed" {...switchTab(0)} />
+                <Tab label="Import" {...switchTab(1)} />
+                <Tab label="OCR" {...switchTab(1)} />
+                <Tab label="Classification" {...switchTab(1)} />
+                <Tab label="Preprocessing" {...switchTab(2)} />
+                <Tab label="Extract" {...switchTab(3)} />
+                <Tab label="Integration" {...switchTab(4)} />
               </Tabs>
               <Button className={classes.uploadBtn}>
                 <PublishIcon />Upload Documents
@@ -211,36 +414,99 @@ const ExtractorDocumentList = (props) => {
               </Button>
             </AppBar>
             <TabPanel value={tabIndex} index={0}>
-              Processed
+              <List dense={false}>
+                <ListItem className={classes.actionListItem}>
+                  <Checkbox checked={allProcessedQueueChecked()} onChange={processedQueueAllCheckboxChangeHandler}/>
+                  <Select className={classes.actionOptionsSelect} 
+                    placeholder="Action Options..."
+                    options={actionOptions} />
+                </ListItem>
+                {processedQueue.map((queue, queueIndex) => (
+                  <ListItem key={queue.guid} className={classes.documentListItem}>
+                    <Checkbox checked={queue.checked} onChange={() => processedQueueCheckboxChangeHandler(queueIndex)} />
+                    <DescriptionIcon />
+                    <ListItemText
+                      primary={queue.filenameWithoutExtension + "." + queue.extension}
+                    />
+                  </ListItem>
+                ))}
+              </List>
             </TabPanel>
             <TabPanel value={tabIndex} index={1}>
-            <List dense={false}>
-              <ListItem className={classes.actionListItem}>
-                <Checkbox checked={allImportQueueChecked()} onChange={importQueueAllCheckboxChangeHandler}/>
-                <Select className={classes.actionOptionsSelect} 
-                  placeholder="Action Options..."
-                  options={actionOptions} />
-              </ListItem>
-              {importQueue.map((queue, queueIndex) => (
-                <ListItem key={queue.guid} className={classes.documentListItem}>
-                  <Checkbox checked={queue.checked} onChange={() => importQueueCheckboxChangeHandler(queueIndex)} />
-                  <DescriptionIcon />
-                  <ListItemText
-                    primary={queue.filenameWithoutExtension + "." + queue.extension}
-                  />
+              <List dense={false}>
+                <ListItem className={classes.actionListItem}>
+                  <Checkbox checked={allImportQueueChecked()} onChange={importQueueAllCheckboxChangeHandler}/>
+                  <Select className={classes.actionOptionsSelect} 
+                    placeholder="Action Options..."
+                    options={actionOptions} />
                 </ListItem>
-              ))}
-            </List>
-              
+                {importQueue.map((queue, queueIndex) => (
+                  <ListItem key={queue.guid} className={classes.documentListItem}>
+                    <Checkbox checked={queue.checked} onChange={() => importQueueCheckboxChangeHandler(queueIndex)} />
+                    <DescriptionIcon />
+                    <ListItemText
+                      primary={queue.filenameWithoutExtension + "." + queue.extension}
+                    />
+                  </ListItem>
+                ))}
+              </List>
             </TabPanel>
             <TabPanel value={tabIndex} index={2}>
-              Preprocessing
+              <List dense={false}>
+                <ListItem className={classes.actionListItem}>
+                  <Checkbox checked={allPreprocessingQueueChecked()} onChange={preprocessingQueueAllCheckboxChangeHandler}/>
+                  <Select className={classes.actionOptionsSelect} 
+                    placeholder="Action Options..."
+                    options={actionOptions} />
+                </ListItem>
+                {preprocessingQueue.map((queue, queueIndex) => (
+                  <ListItem key={queue.guid} className={classes.documentListItem}>
+                    <Checkbox checked={queue.checked} onChange={() => preprocessingQueueCheckboxChangeHandler(queueIndex)} />
+                    <DescriptionIcon />
+                    <ListItemText
+                      primary={queue.filenameWithoutExtension + "." + queue.extension}
+                    />
+                  </ListItem>
+                ))}
+              </List>
             </TabPanel>
             <TabPanel value={tabIndex} index={3}>
-              Extract
+              <List dense={false}>
+                <ListItem className={classes.actionListItem}>
+                  <Checkbox checked={allExtractQueueChecked()} onChange={extractQueueAllCheckboxChangeHandler}/>
+                  <Select className={classes.actionOptionsSelect} 
+                    placeholder="Action Options..."
+                    options={actionOptions} />
+                </ListItem>
+                {extractQueue.map((queue, queueIndex) => (
+                  <ListItem key={queue.guid} className={classes.documentListItem}>
+                    <Checkbox checked={queue.checked} onChange={() => extractQueueCheckboxChangeHandler(queueIndex)} />
+                    <DescriptionIcon />
+                    <ListItemText
+                      primary={queue.filenameWithoutExtension + "." + queue.extension}
+                    />
+                  </ListItem>
+                ))}
+              </List>
             </TabPanel>
             <TabPanel value={tabIndex} index={4}>
-              Integration
+              <List dense={false}>
+                <ListItem className={classes.actionListItem}>
+                  <Checkbox checked={allIntegrationQueueChecked()} onChange={integrationQueueAllCheckboxChangeHandler}/>
+                  <Select className={classes.actionOptionsSelect} 
+                    placeholder="Action Options..."
+                    options={actionOptions} />
+                </ListItem>
+                {integrationQueue.map((queue, queueIndex) => (
+                  <ListItem key={queue.guid} className={classes.documentListItem}>
+                    <Checkbox checked={queue.checked} onChange={() => integrationQueueCheckboxChangeHandler(queueIndex)} />
+                    <DescriptionIcon />
+                    <ListItemText
+                      primary={queue.filenameWithoutExtension + "." + queue.extension}
+                    />
+                  </ListItem>
+                ))}
+              </List>
             </TabPanel>
           </Grid>
         </Grid>
